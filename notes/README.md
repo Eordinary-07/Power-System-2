@@ -24,6 +24,7 @@ Start at the top of this list and read straight through — each file builds on 
 | 6 | [`05-unit-iv-economic-operation.md`](05-unit-iv-economic-operation.md) | Unit IV — Incremental fuel costs, equal-λ rule, penalty factors, B-coefficients, coordination equation, brief unit commitment |
 | 7 | [`06-unit-v-control.md`](06-unit-v-control.md) | Unit V — Governor hardware, droop, AGC, frequency vs. voltage control split, excitation/AVR, reactive-power sources, timescales stack |
 | 8 | [`07-quick-reference.md`](07-quick-reference.md) | **After you've read the notes** — one-card summary of every key formula, table, and rule of thumb |
+| 9 | [`08-glossary-and-symbols.md`](08-glossary-and-symbols.md) | **Lookup reference** — glossary of every technical term and an index of every symbol, with the section where it was introduced |
 | ref | [`diagram_log.md`](diagram_log.md) | Every figure cited: source book, page, caption match, final verification status |
 
 All figures are stored in [`figures/`](figures/).
