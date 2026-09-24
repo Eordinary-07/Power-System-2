@@ -193,3 +193,22 @@ The standard procedure is iterative:
    - *Because an extra MW from plant i delivers only (1 − ∂P<sub>L</sub>/∂P<sub>i</sub) MW to the load; the penalty factor L<sub>i</sub> accounts for lost power.*
 4. What does a B-coefficient B<sub>ij</sub> represent physically?
    - *A sensitivity coefficient relating generator i's and generator j's output to the incremental contribution to total transmission loss. It depends on network resistances and the current-pattern sensitivity between those generators.*
+
+---
+
+### Practice problems (answers only — solve on your own)
+
+**P1.** (Incremental cost) A plant has cost function C(P) = 300 + 7P + 0.015P² Rs/h. Find the incremental cost at P = 100 MW.
+  - *Final answer:* IC = dC/dP = 7 + 0.03P = 7 + 3 = 10 Rs/MWh at 100 MW.
+
+**P2.** (Two-plant lossless dispatch) Two plants: C₁ = 200 + 6P₁ + 0.01P₁², C₂ = 150 + 8P₂ + 0.02P₂² (Rs/h; P in MW). Total load P<sub>D</sub> = 300 MW. Find optimal P₁, P₂, and λ.
+  - *Final answers:* IC₁ = 6 + 0.02P₁, IC₂ = 8 + 0.04P₂. Setting equal: 6+0.02P₁ = 8+0.04P₂ ⇒ P₁ = 100 + 2P₂. With P₁+P₂=300: 100 + 3P₂ = 300 ⇒ P₂ = 66.7 MW, P₁ = 233.3 MW, λ = 6 + 0.02(233.3) = 10.67 Rs/MWh.
+
+**P3.** (Generator limits) For P2, add P<sub>1,max</sub> = 200 MW (P<sub>1,min</sub> = 50 MW, P<sub>2,max</sub> = 200 MW, P<sub>2,min</sub> = 20 MW). Re-dispatch.
+  - *Final answers:* Unconstrained P₁ = 233.3 > 200, so clamp P₁ = 200 MW. Then P₂ = 300 − 200 = 100 MW. Check: IC₁ = 6 + 0.02(200) = 10, IC₂ = 8 + 0.04(100) = 12 Rs/MWh. Plant 2 is the marginal unit (λ = 12); plant 1 is "maxed out" at its upper limit.
+
+**P4.** (Penalty factor) Plant A is remote from the load center with B<sub>AA</sub> = 10⁻³ MW⁻¹, B<sub>BB</sub> = 0 for the nearby plant. At P<sub>A</sub> = 200 MW, P<sub>B</sub> = 200 MW, find L<sub>A</sub> and L<sub>B</sub>. (Use P<sub>L</sub> = ΣΣ B<sub>ij</sub> P<sub>i</sub> P<sub>j</sub> with B<sub>AB</sub> = B<sub>BA</sub> = 0.)
+  - *Final answers:* P<sub>L</sub> = B<sub>AA</sub>P<sub>A</sub>² = 0.001·40000 = 40 MW; ∂P<sub>L</sub>/∂P<sub>A</sub> = 2B<sub>AA</sub>P<sub>A</sub> = 0.4 MW/MW; ∂P<sub>L</sub>/∂P<sub>B</sub> = 0. L<sub>A</sub> = 1/(1 − 0.4) = 1.67; L<sub>B</sub> = 1/(1 − 0) = 1.0. At optimum IC<sub>A</sub>/L<sub>A</sub> = IC<sub>B</sub>/L<sub>B</sub> = λ, so plant A must have a lower incremental cost (be "held back" by its 67% penalty factor).
+
+**P5.** (Conceptual) Why is a cheap baseload coal plant dispatched at its rated output while an expensive gas turbine is barely loaded?
+  - *Final answer:* At low load, the baseload plant's IC is lower than the gas turbine's. As load rises, both IC curves rise; the optimum has all units at the same (penalized) incremental cost. A baseload plant is cheap per MWh *incrementally* even near rated, so it maxes out; the peaker has high IC even at low output and is dispatched only when cheaper units are exhausted.

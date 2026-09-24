@@ -484,3 +484,22 @@ Every symmetric power-system element (generators, lines, transformers, static lo
   - *Answer:* Positive and negative networks reach all the way to the load (with a +30° then −30° phase shift that cancels), but only the positive network has EMFs (in the generator). The zero-sequence network is blocked at the ungrounded Y load (open) and at the Δ windings of the step-up transformer from the line side; on the generator side, zero-sequence sees 3Z<sub>n</sub> + Z<sub>0g</sub> in series to reference, with the Δ side appearing as a short through leakage impedance. Zero-sequence current can flow from the generator neutral but cannot reach the load or the high-voltage line.
 
 > 🔵 **Pacing note:** If you've followed up to here, you have all the tools needed for Unit II. If anything in §1.10–1.13 felt murky, it's usually a sign to re-read §1.2 and §1.6 — those contain the actual idea; the rest is applying the idea to each physical element.
+
+---
+
+### Practice problems (answers only — solve on your own)
+
+**P1.** (Decomposition) The phase voltages at a bus are V<sub>a</sub> = 1.0∠0°, V<sub>b</sub> = 0.8∠−100°, V<sub>c</sub> = 0.9∠110° (pu). Find V<sub>a0</sub>, V<sub>a1</sub>, V<sub>a2</sub>.
+  - *Final answers:* V<sub>a0</sub> ≈ 0.05∠−32°, V<sub>a1</sub> ≈ 0.89∠3.7°, V<sub>a2</sub> ≈ 0.10∠−53° (pu). Sanity: |V<sub>a0</sub>| + |V<sub>a2</sub>| ≪ |V<sub>a1</sub>|, which is typical for a mildly unbalanced system.
+
+**P2.** (Synthesis) Given V<sub>a1</sub> = 1∠0°, V<sub>a2</sub> = 0.2∠180°, V<sub>a0</sub> = 0.1∠0° (pu), reconstruct V<sub>a</sub>, V<sub>b</sub>, V<sub>c</sub>.
+  - *Final answers:* V<sub>a</sub> = 0.9∠0°, V<sub>b</sub> ≈ 0.96∠−111°, V<sub>c</sub> ≈ 0.96∠111° (pu). Notice that V<sub>a</sub> is depressed relative to V<sub>b</sub>, V<sub>c</sub> — this is what a mild LG fault on phase a looks like at a remote bus.
+
+**P3.** (`a`-operator algebra) Simplify (a − a²) without a calculator (give magnitude and angle).
+  - *Final answer:* a − a² = j√3 = √3∠90°. (Used constantly in LL/LLG fault current derivations.)
+
+**P4.** (Y-Δ phase shift) On the HV side of a Y<sub>g</sub>-Δ transformer, positive-sequence voltage is V<sub>HV,1</sub> = 1∠0°. What is V<sub>LV,1</sub> if the transformer has the standard ANSI/IEEE phase shift (HV leads LV by +30°)? What is V<sub>LV,2</sub> in the same connection?
+  - *Final answers:* V<sub>LV,1</sub> = 1∠−30°, V<sub>LV,2</sub> = V<sub>HV,2</sub> · 1∠+30° (negative sequence shifts the opposite way). Remember: zero sequence is blocked by the Δ.
+
+**P5.** (Neutral impedance reflection) A generator is Y-grounded through Z<sub>n</sub> = j0.1 pu (on the generator base). How does Z<sub>n</sub> appear in the zero-sequence network?
+  - *Final answer:* As 3Z<sub>n</sub> = j0.3 pu in series with the generator zero-sequence impedance Z<sub>0g</sub> between the generator neutral point and the reference bus. The factor of 3 is the single most-examined point in Unit I.

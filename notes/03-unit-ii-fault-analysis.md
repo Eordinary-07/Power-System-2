@@ -330,3 +330,25 @@ When a new generator or feeder is added to a station, the total fault current ca
    - *Zero sequence (no ground path).*
 5. Why is a Y<sub>g</sub>-Δ transformer a "zero-sequence ground source" on the Y side?
    - *Because the Δ provides a short-circuited path for zero-sequence current to circulate, so zero-sequence on the Y side sees a short to reference through leakage impedance — making the Y-grounded neutral an effective zero-sequence ground.*
+
+---
+
+### Practice problems (answers only — solve on your own)
+
+**P1.** (3-phase fault) A generator (100 MVA, X″<sub>d</sub> = j0.15 pu on 100 MVA) feeds through a transformer (100 MVA, X = j0.1 pu) and a line (X = j0.3 pu on 100 MVA) to a bus where a solid 3-phase fault occurs. Find the fault current magnitude in pu on 100 MVA, fault MVA, and fault current in amperes at the 220 kV line voltage.
+  - *Final answers:* Z<sub>th</sub> = j0.55 pu; I<sub>f</sub> = 1.82 pu; S<sub>f</sub> ≈ 182 MVA; I<sub>f</sub> ≈ 477 A at 220 kV.
+
+**P2.** (DC offset) An R-L circuit has X/R = 20. A fault occurs at voltage zero (the worst instant for DC offset). What is the ratio of the first peak asymmetrical current to the symmetrical peak?
+  - *Final answer:* Roughly 1 + e<sup>−(π/(X/R))</sup> = 1 + e<sup>−0.157</sup> ≈ 1.85, i.e. the first peak is ~1.85× the symmetrical peak — that's why breakers have a separate "momentary" rating.
+
+**P3.** (LG fault, easy numbers) At a fault bus, Z<sub>1</sub> = Z<sub>2</sub> = j0.2 pu, Z<sub>0</sub> = j0.1 pu (solidly grounded system, V<sub>f</sub> = 1∠0°). Find the LG fault current and compare it to the 3-phase fault current.
+  - *Final answers:* I<sub>a</sub>(LG) = 3/(j0.5) = −j6.0 pu; I<sub>f</sub>(3φ) = 1/j0.2 = −j5.0 pu. Here LG exceeds 3φ (because Z<sub>0</sub> < Z<sub>1</sub>), illustrating that "three-phase is always worst" is false.
+
+**P4.** (LL fault) For the same Z<sub>1</sub> = Z<sub>2</sub> = j0.2 pu, Z<sub>0</sub> = j0.1 pu, find the fault current in phase b for a bolted LL fault on phases b and c.
+  - *Final answer:* |I<sub>b</sub>| = √3/(0.4) = 4.33 pu — smaller than both 3-phase (5 pu) and LG (6 pu) at this bus.
+
+**P5.** (Fault impedance effect) For the bus in P3, add a fault impedance Z<sub>f</sub> = j0.1 pu (e.g. arc resistance + tower footing resistance, approximated as inductive). By what factor does the LG fault current decrease?
+  - *Final answers:* I<sub>a</sub> = 3/(j0.5 + j0.3) = −j3.75 pu; the current drops to 3.75/6.0 = 0.625 (a 37.5% reduction) — fault impedance matters enormously for ground-fault duty.
+
+**P6.** (Breaker sizing) At a station bus, the calculated symmetrical interrupting duty is 40 kA rms at 132 kV. What is the required symmetrical interrupting MVA rating of the breaker?
+  - *Final answer:* √3 × 132 × 40 ≈ 9145 MVA → a 10 kA-class breaker is far too small; you would specify a 40 kA / ~10,000 MVA class breaker, or add current-limiting reactors.

@@ -201,7 +201,23 @@ You can remember the whole unit as two separate control stacks, operating at thr
 
 ---
 
-## 5.7 Where these notes leave off 🟡
+## 5.7 Practice problems (answers only — solve on your own)
+
+**P1.** (Droop, single unit) A 500 MW generator has R = 5% droop. By how much does frequency drop (from 50 Hz) when the unit picks up 100 MW from a no-load initial state? Assume D = 0.
+  - *Final answer:* Full 500 MW corresponds to 5% of 50 Hz = 2.5 Hz change. Picking up 100 MW (1/5 of rating) gives Δf = −2.5/5 = −0.5 Hz, so f = 49.5 Hz.
+
+**P2.** (Two-unit load sharing) Three parallel generators: G1 rated 200 MW, R₁ = 4%; G2 rated 300 MW, R₂ = 5%; G3 rated 500 MW, R₃ = 3%. A 60 MW load increase drops frequency. D = 0. Find the new load on each unit (MW increase) and the frequency deviation in Hz, starting from 50 Hz with units at half load initially.
+  - *Final answers:* Gains in MW/Hz: β₁ = 200/(0.04·50) = 100 MW/Hz; β₂ = 300/(0.05·50) = 120 MW/Hz; β₃ = 500/(0.03·50) ≈ 333.3 MW/Hz. Total β = 553.3 MW/Hz. Δf = −60/553.3 ≈ −0.108 Hz (f ≈ 49.89 Hz). ΔP₁ ≈ 10.8 MW, ΔP₂ ≈ 13.0 MW, ΔP₃ ≈ 36.2 MW (check sum ≈ 60 MW). Notice the largest-stiffness unit (G3, lowest % droop × largest rating) picks up most of the load.
+
+**P3.** (D + 1/R stiffness) An island system has total generation capacity 2000 MW with an average composite droop R = 0.05 pu on 2000 MVA base, and load damping D = 1.5 pu on 2000 MVA base (meaning load drops 1.5% per 1% frequency drop). Find the frequency change after a 50 MW generation loss (ΔP = −0.025 pu).
+  - *Final answer:* β = D + 1/R = 1.5 + 20 = 21.5 pu/pu (on 2000 MVA, 50 Hz). Δf in pu = −ΔP/β = 0.025/21.5 ≈ 0.00116 pu = 0.058 Hz. So f ≈ 49.94 Hz — notice how load damping *plus* governor droop stiffen the system dramatically compared to D = 0.
+
+**P4.** (Conceptual) If AGC is disabled on all units in an isolated system, what happens to frequency after a permanent 100 MW load increase?
+  - *Final answer:* Primary droop response catches the frequency at a new steady state below 50 Hz (proportional to the size of the step and the total β = D+1/R), but there is a persistent steady-state error — frequency never returns to 50 Hz. AGC (secondary control) is what integrates that error out over tens of seconds by slowly raising speed-changer setpoints.
+
+---
+
+## 5.8 Where these notes leave off 🟡
 
 If you have read these five units in order and worked the self-checks, you now have the conceptual skeleton of an introductory power-systems analysis course:
 

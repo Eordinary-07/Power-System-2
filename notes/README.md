@@ -15,7 +15,8 @@ This directory contains a complete set of introductory notes for **Power Systems
 2. Stop at every ❓ and answer *out loud* (or on scratch paper) before reading the answer. If you can't answer, go back one page — you missed something.
 3. After finishing each unit, do its **self-check** before moving on. The questions look simple; most students who think they "get it" can't answer them verbally on the first try.
 4. After finishing all five units, read `07-quick-reference.md` once to see everything laid out on one page. Use `08-glossary-and-symbols.md` as a lookup index whenever you forget what a symbol means.
-5. Re-do the four narrated worked examples (Unit II §2.4 and §2.7, Unit III §3.4, Unit IV §4.3, Unit V §5.2 example) with the answers covered — if you can reproduce those from scratch, you can handle any exam problem of similar shape.
+5. Re-do the five narrated worked examples (Unit II §2.4 and §2.7, Unit III §3.4, Unit IV §4.3, Unit V §5.2 example) with the answers covered — if you can reproduce those from scratch, you can handle any exam problem of similar shape.
+6. Then attempt the **practice problems** (answers given, solutions not shown) at the end of each unit. If your numbers match, you're exam-ready. If they don't, re-read the relevant section.
 
 ---
 

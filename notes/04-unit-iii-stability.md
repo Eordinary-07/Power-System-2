@@ -256,3 +256,22 @@ Any change that increases the decelerating area or decreases the accelerating ar
    - *Kinetic energy gained by the rotor during acceleration (accelerating area) versus the kinetic energy that can be absorbed while decelerating to the new stable equilibrium (decelerating area).*
 5. If fault clearing is delayed, does the critical clearing angle get larger or smaller?
    - *That's a trick question — the critical clearing angle is a fixed value for a given system/fault; delaying clearing past that angle is what makes the system unstable. The longer the clearing time, the more δ has already increased past δ<sub>cr</sub>, and the more certain instability becomes.*
+
+---
+
+### Practice problems (answers only — solve on your own)
+
+**P1.** (Swing equation order-of-magnitude) A 500 MVA generator has H = 5 MJ/MVA on its own base. A fault creates a constant accelerating power P<sub>a</sub> = 0.5 pu for 10 cycles (0.2 s at 50 Hz). By roughly how much does the rotor accelerate in that time? (Use constant-acceleration approximation; ignore P<sub>e</sub> variation with δ for the estimate.)
+  - *Final answer:* d²δ/dt² = (π f/H) P<sub>a</sub> ≈ (157/5)(0.5) ≈ 15.7 elect-rad/s²; Δδ ≈ ½·15.7·(0.2)² ≈ 0.314 elect-rad ≈ 18° in 10 cycles. That's a typical rotor excursion during a fast-cleared fault.
+
+**P2.** (Steady-state stability limit) A generator with E = 1.2 pu is connected through X = 0.6 pu to an infinite bus V = 1.0 pu. (a) What is the steady-state stability limit in pu? (b) If the generator is delivering P = 1.0 pu, what is δ?
+  - *Final answers:* (a) P<sub>max</sub> = EV/X = 2.0 pu (reached at δ = 90°); (b) sin δ = (1.0·0.6)/(1.2·1.0) = 0.5 ⇒ δ = 30° (the 150° solution is unstable).
+
+**P3.** (Critical clearing angle) Use the same numbers as the worked example in §3.4 but with P<sub>m</sub> reduced to 1.0 pu (i.e., the generator is loaded lighter, E=1.2, V=1.0, X<sub>pre</sub>=0.4, X<sub>post</sub>=0.6). Find δ<sub>0</sub>, δ<sub>max</sub>, and δ<sub>cr</sub> for the case P<sub>e,during</sub> = 0 (fault at generator terminals, worst case).
+  - *Final answers:* P<sub>max,pre</sub> = 3.0, P<sub>max,post</sub> = 2.0; δ<sub>0</sub> = arcsin(1/3) ≈ 19.5°; δ<sub>max</sub> = 180° − arcsin(P<sub>m</sub>/P<sub>max,post</sub>) = 180° − 30° = 150°; δ<sub>cr</sub> ≈ 74° (from cos δ<sub>cr</sub> = (P<sub>m</sub>/P<sub>max,post</sub>)(δ<sub>max</sub> − δ<sub>0</sub>) + cos δ<sub>max</sub>, in radians). Compare to §3.4's δ<sub>cr</sub> ≈ 48° at P<sub>m</sub>=1.5 — loading lighter dramatically increases the clearing-angle margin.
+
+**P4.** (Equal area with finite P<sub>during</sub>) Re-do P3 but suppose that during the fault, P<sub>e,during</sub> = 0.5 sin δ (i.e., the fault is not at the generator terminals but on one of two parallel lines, so some power is still transferred during the fault). For P<sub>m</sub> = 1.0 pu, find δ<sub>cr</sub>.
+  - *Final answer:* The accelerating area integral now has a P<sub>max,during</sub> cos δ term; solving gives δ<sub>cr</sub> ≈ 87° — larger than the P<sub>e,during</sub>=0 case (≈74°), as expected (some power is still transferred during the fault, so acceleration is slower and clearing can happen later).
+
+**P5.** (Conceptual) Name three methods of improving transient stability and state whether each increases the decelerating area or decreases the accelerating area (or both).
+  - *Final answers:* Faster clearing → smaller A<sub>1</sub> (less acceleration); fast valving → smaller A<sub>1</sub> by reducing P<sub>m</sub>; forced excitation → larger A<sub>2</sub> by raising P<sub>max,post</sub>; series compensation → larger A<sub>2</sub>; single-pole switching → larger A<sub>2</sub> (less post-fault X increase).
