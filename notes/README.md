@@ -23,6 +23,7 @@ Start at the top of this list and read straight through — each file builds on 
 | 5 | [`04-unit-iii-stability.md`](04-unit-iii-stability.md) | Unit III — Swing equation, H constant, P-δ curve, steady-state stability, equal-area criterion, critical clearing angle, improving stability |
 | 6 | [`05-unit-iv-economic-operation.md`](05-unit-iv-economic-operation.md) | Unit IV — Incremental fuel costs, equal-λ rule, penalty factors, B-coefficients, coordination equation, brief unit commitment |
 | 7 | [`06-unit-v-control.md`](06-unit-v-control.md) | Unit V — Governor hardware, droop, AGC, frequency vs. voltage control split, excitation/AVR, reactive-power sources, timescales stack |
+| 8 | [`07-quick-reference.md`](07-quick-reference.md) | **After you've read the notes** — one-card summary of every key formula, table, and rule of thumb |
 | ref | [`diagram_log.md`](diagram_log.md) | Every figure cited: source book, page, caption match, final verification status |
 
 All figures are stored in [`figures/`](figures/).
