@@ -129,6 +129,23 @@ The procedure is to convert every element to per-unit on a common base, sum the 
 
 > ⚠️ **Common misconception:** "Prefault load currents are zero so we can ignore them." For fault *magnitude*, ignoring load (setting prefault currents to zero and V<sub>f</sub> = 1 pu) is an approximation that slightly underestimates or overestimates depending on load, but is within ~10% and is standard for breaker-sizing studies. For relay settings and stability studies, the prefault state matters more.
 
+### Worked example (small numbers, 3-phase fault) 🟡
+
+**Problem.** Two identical generators share a common bus: each G1, G2 is 100 MVA, 11 kV, X″<sub>d</sub> = j0.2 pu on its own base. They feed a step-up transformer T (200 MVA, 11/132 kV, X = j0.1 pu on 200 MVA base) and a 132 kV transmission line (X = j50 Ω) to a remote bus where a solid 3-phase fault occurs. Use 100 MVA base.
+
+**Step-by-step reasoning:**
+
+1. **Convert everything to 100 MVA base.**
+   - G1, G2: already on 100 MVA base, X″<sub>d</sub> = j0.2 pu each.
+   - T: X = 0.1 × (100/200) = j0.05 pu.
+   - Line: Z<sub>base</sub> at 132 kV, 100 MVA = (132)²/100 = 174.24 Ω, so X<sub>line</sub> = j50/174.24 = j0.287 pu.
+2. **Draw the positive-sequence Thevenin from the fault.** Two generators in parallel (j0.2 || j0.2 = j0.1) in series with transformer (j0.05) and line (j0.287): Z<sub>th,1</sub> = j0.1 + j0.05 + j0.287 = j0.437 pu.
+3. **Fault current in pu:** I<sub>f</sub> = V<sub>f</sub>/Z<sub>th,1</sub> = 1/j0.437 = −j2.29 pu (on 100 MVA, 132 kV).
+4. **Convert to amperes:** I<sub>base</sub> at 132 kV = 100×10⁶/(√3 × 132×10³) = 437 A. So I<sub>f</sub> = 2.29 × 437 ≈ 1000 A.
+5. **Fault MVA:** √3 × 132 kV × 1000 A ≈ 229 MVA (or directly, S<sub>f</sub> = S<sub>base</sub>/|Z<sub>th</sub>| = 100/0.437 ≈ 229 MVA).
+
+**🟡 Does this make sense?** The parallel generators look like a single j0.1 pu source behind them (half of one unit's reactance), then transformer + line add ~j0.34 pu. The fault is on the remote end of a long line, so the current is moderate (~2.3 pu on 100 MVA base, i.e. about 2× the combined rated current of both generators). If the fault were on the HV bus of the transformer instead, Z<sub>th</sub> would be just j0.1 + j0.05 = j0.15 pu, I<sub>f</sub> = 6.67 pu ≈ 2900 A — a much bigger number, which is why breakers on station buses must be rated higher than breakers on remote line ends.
+
 ---
 
 ## 2.5 The connection rules for unsymmetrical shunt faults 🔴 Slow down

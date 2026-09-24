@@ -10,6 +10,15 @@ This directory contains a complete set of introductory notes for **Power Systems
 
 ---
 
+## How to study from these notes
+1. Read straight through in the order in the table below. Don't skip ahead — later units assume every symbol and convention from earlier ones.
+2. Stop at every ❓ and answer *out loud* (or on scratch paper) before reading the answer. If you can't answer, go back one page — you missed something.
+3. After finishing each unit, do its **self-check** before moving on. The questions look simple; most students who think they "get it" can't answer them verbally on the first try.
+4. After finishing all five units, read `07-quick-reference.md` once to see everything laid out on one page. Use `08-glossary-and-symbols.md` as a lookup index whenever you forget what a symbol means.
+5. Re-do the four narrated worked examples (Unit II §2.4 and §2.7, Unit III §3.4, Unit IV §4.3, Unit V §5.2 example) with the answers covered — if you can reproduce those from scratch, you can handle any exam problem of similar shape.
+
+---
+
 ## Reading order
 
 Start at the top of this list and read straight through — each file builds on the previous one.
@@ -57,11 +66,12 @@ Other signposts:
 11. Subject map in `00-outline.md` and `01-intro` shows how units connect before diving in.
 12. **Added** (not in brief): explicit pacing dots, recurring symbol-redefinition convention (every symbol re-defined at first use in each unit), narrated round-number worked examples in each unit, a quick-reference card (07), a glossary & symbol index (08), and a complete diagram-verification log.
 
-## Worked examples
+## Worked examples (all with narrated reasoning, not just answer)
+- Unit II §2.4: 3-phase fault on a two-generator + transformer + line system (1000 A / 229 MVA)
 - Unit II §2.7: LG fault through Y<sub>g</sub>-Δ transformer (5 pu fault current)
 - Unit III §3.4: Equal-area stability calculation (3φ fault cleared by line trip, finding δ<sub>cr</sub>)
 - Unit IV §4.3: Two-plant economic dispatch (250/150 MW, λ = 11 Rs/MWh) with a generator-limit bonus
-- Unit V: embedded round-number illustrations (5% droop load-sharing, D + 1/R stiffness) within the prose
+- Unit V §5.2: Two-generator governor droop load-sharing (49.77 Hz new frequency, 118.5/61.5 MW split)
 
 ## Figure count
 - Unit I: 10 placed K&N figures

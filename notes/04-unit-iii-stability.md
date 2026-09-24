@@ -110,6 +110,9 @@ At an equilibrium point P<sub>m</sub> = P<sub>e</sub>(δ<sub>0</sub>), if δ str
 
 The **steady-state stability limit** is P<sub>max</sub> = EV/X, reached at δ = 90°. In steady state a generator must operate with δ well below 90° (typically 30–45°) to leave margin.
 
+**❓ Understanding checkpoint:** A generator is delivering P = 0.5 pu to an infinite bus V = 1 pu through X = 0.4 pu with E = 1.2 pu. At what angle δ is it operating, and is this point stable?
+  - *Answer:* P = (1.2·1/0.4) sin δ = 3 sin δ = 0.5 ⇒ sin δ = 0.167 ⇒ δ ≈ 9.6° (the other mathematical solution δ ≈ 170.4° is unstable because dP/dδ < 0 there). The operating point is at 9.6°, well below 90°, so stable.
+
 > ⚠️ **Common misconception:** "The generator works like a DC motor where more torque = more speed." No, in a synchronous machine, mechanical power changes are balanced by changes in *rotor angle δ*, not speed — at steady state the machine always runs at synchronous speed (50/60 Hz). P<sub>m</sub> going up pushes δ up until P<sub>e</sub> matches at the new angle.
 
 ---

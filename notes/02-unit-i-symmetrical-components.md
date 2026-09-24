@@ -22,6 +22,9 @@ In an **unbalanced** system, at least one of these fails: magnitudes differ, pha
 
 The naive response would be: "Fine, let's just analyze all three phases with KVL/KCL." That gives you a messy 3×3 coupled system of equations for every element — still doable by computer, but it completely destroys the *insight* that made balanced analysis easy. Symmetrical components is the clever alternative.
 
+**❓ Understanding checkpoint:** In a balanced Y-connected load, what is V<sub>a</sub> + V<sub>b</sub> + V<sub>c</sub>? What happens to that sum if phase a becomes shorted to ground?
+  - *Answer:* Zero in balanced operation (so I<sub>n</sub> = 0). After an LG fault, V<sub>a</sub> ≈ 0 but V<sub>b</sub>, V<sub>c</sub> ≈ V<sub>f</sub>, so the sum is ≈ V<sub>b</sub> + V<sub>c</sub> ≠ 0 and neutral current flows.
+
 ---
 
 ## 1.2 Fortescue's big idea — in words, in pictures, and in an equation 🟡
