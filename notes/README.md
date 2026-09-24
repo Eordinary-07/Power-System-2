@@ -17,6 +17,7 @@ This directory contains a complete set of introductory notes for **Power Systems
 4. After finishing all five units, read `07-quick-reference.md` once to see everything laid out on one page. Use `08-glossary-and-symbols.md` as a lookup index whenever you forget what a symbol means.
 5. Re-do the five narrated worked examples (Unit II §2.4 and §2.7, Unit III §3.4, Unit IV §4.3, Unit V §5.2 example) with the answers covered — if you can reproduce those from scratch, you can handle any exam problem of similar shape.
 6. Then attempt the **practice problems** (answers given, solutions not shown) at the end of each unit. If your numbers match, you're exam-ready. If they don't, re-read the relevant section.
+7. Finally, read `09-exam-prep.md` for the formula sheet, five standard exam-question shapes, common mistakes, and ten short-answer questions that appear on almost every PS-II paper.
 
 ---
 
@@ -35,6 +36,7 @@ Start at the top of this list and read straight through — each file builds on 
 | 7 | [`06-unit-v-control.md`](06-unit-v-control.md) | Unit V — Governor hardware, droop, AGC, frequency vs. voltage control split, excitation/AVR, reactive-power sources, timescales stack |
 | 8 | [`07-quick-reference.md`](07-quick-reference.md) | **After you've read the notes** — one-card summary of every key formula, table, and rule of thumb |
 | 9 | [`08-glossary-and-symbols.md`](08-glossary-and-symbols.md) | **Lookup reference** — glossary of every technical term and an index of every symbol, with the section where it was introduced |
+| 10 | [`09-exam-prep.md`](09-exam-prep.md) | **Before the exam** — formula sheet, five standard exam-question shapes, common mistakes, ten repeat short-answer questions, three-day study plan |
 | ref | [`diagram_log.md`](diagram_log.md) | Every figure cited: source book, page, caption match, final verification status |
 
 All figures are stored in [`figures/`](figures/).
@@ -68,6 +70,7 @@ Other signposts:
 12. **Added** (not in brief): explicit pacing dots, recurring symbol-redefinition convention (every symbol re-defined at first use in each unit), narrated round-number worked examples in each unit, a quick-reference card (07), a glossary & symbol index (08), and a complete diagram-verification log.
 
 ## Worked examples (all with narrated reasoning, not just answer)
+- Unit I §1.6: Symmetrical-components decomposition (mild LG fault voltages: V<sub>a1</sub>≈0.8, V<sub>a0</sub>≈−0.25, V<sub>a2</sub>≈−0.15 pu)
 - Unit II §2.4: 3-phase fault on a two-generator + transformer + line system (1000 A / 229 MVA)
 - Unit II §2.7: LG fault through Y<sub>g</sub>-Δ transformer (5 pu fault current)
 - Unit III §3.4: Equal-area stability calculation (3φ fault cleared by line trip, finding δ<sub>cr</sub>)

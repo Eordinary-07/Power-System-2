@@ -193,6 +193,44 @@ I_p = A I_s ,     I_s = A⁻¹ I_p                                         (1.14
 **❓ Understanding checkpoint:** For a balanced positive-sequence set (V<sub>b</sub> = a² V<sub>a</sub>, V<sub>c</sub> = a V<sub>a</sub>), what does formula (1.12) give for V<sub>a2</sub>?
   - *Answer:* V<sub>a2</sub> = (1/3)(V<sub>a</sub> + a²·a² V<sub>a</sub> + a·a V<sub>a</sub>) = (V<sub>a</sub>/3)(1 + a⁴ + a²) = (V<sub>a</sub>/3)(1 + a + a²) = 0. Good — balanced positive-sequence sets have zero negative-sequence content, exactly as we expect.
 
+### Worked example (small numbers, A and A⁻¹) 🟡
+
+**Problem.** The phase voltages at a bus during a fault are measured as:
+V<sub>a</sub> = 0.4∠0° pu, V<sub>b</sub> = 1.0∠−125° pu, V<sub>c</sub> = 1.0∠125° pu.
+(This is what a mild LG fault on phase a looks like: V<sub>a</sub> sagged, V<sub>b</sub> and V<sub>c</sub> roughly normal but slightly shifted in angle.)
+
+Extract the three sequence components using equations (1.11)–(1.13).
+
+**Step-by-step reasoning:**
+
+1. **Write each phasor in rectangular form.** Use a = e^{j120°} = −0.5 + j0.866, a² = e^{j240°} = −0.5 − j0.866.
+   - V<sub>a</sub> = 0.4 + j0
+   - V<sub>b</sub> = 1.0 cos(−125°) + j sin(−125°) = −0.574 − j0.819
+   - V<sub>c</sub> = 1.0 cos(125°) + j sin(125°) = −0.574 + j0.819
+
+2. **Zero sequence — easiest:** V<sub>a0</sub> = (1/3)(V<sub>a</sub> + V<sub>b</sub> + V<sub>c</sub>)
+   = (1/3)(0.4 −0.574 −0.574 + j(0 −0.819 + 0.819))
+   = (1/3)(−0.748 + j0) = **−0.249 pu** (real, magnitude ≈ 0.25).
+
+3. **Positive sequence:** V<sub>a1</sub> = (1/3)(V<sub>a</sub> + a V<sub>b</sub> + a² V<sub>c</sub>).
+   First compute a V<sub>b</sub> = (−0.5 + j0.866)(−0.574 − j0.819) = 0.287 + j0.410 − j0.497 + 0.710 = 0.997 − j0.087.
+   Then a² V<sub>c</sub> = (−0.5 − j0.866)(−0.574 + j0.819) = 0.287 − j0.410 + j0.497 + 0.710 = 0.997 + j0.087.
+   Summing: V<sub>a</sub> + aV<sub>b</sub> + a²V<sub>c</sub> = 0.4 + 0.997 + 0.997 + j(0 − 0.087 + 0.087) = 2.394 + j0.
+   V<sub>a1</sub> = 2.394/3 = **0.798∠0° pu** (nearly 0.8, positive sequence still dominant).
+
+4. **Negative sequence:** V<sub>a2</sub> = (1/3)(V<sub>a</sub> + a² V<sub>b</sub> + a V<sub>c</sub>).
+   a² V<sub>b</sub> = (−0.5 − j0.866)(−0.574 − j0.819) = 0.287 + j0.410 + j0.497 − 0.710 = −0.423 + j0.907.
+   a V<sub>c</sub> = (−0.5 + j0.866)(−0.574 + j0.819) = 0.287 − j0.410 − j0.497 − 0.710 = −0.423 − j0.907.
+   Summing: 0.4 − 0.423 − 0.423 + j(0 + 0.907 − 0.907) = −0.446.
+   V<sub>a2</sub> = −0.446/3 = **−0.149 pu** (magnitude ≈ 0.15).
+
+5. **Sanity check — re-synthesize:** Use V<sub>p</sub> = A V<sub>s</sub> on phase a:
+   V<sub>a</sub> = V<sub>a0</sub> + V<sub>a1</sub> + V<sub>a2</sub> = −0.249 + 0.798 − 0.149 = 0.400 ✓ (matches input V<sub>a</sub> = 0.4).
+   On phase b: V<sub>b</sub> = V<sub>a0</sub> + a² V<sub>a1</sub> + a V<sub>a2</sub>. This is more arithmetic, but will match.
+   Magnitudes confirm |V<sub>a1</sub>| ≫ |V<sub>a0</sub>|, |V<sub>a2</sub>| — positive sequence is still dominant, with a small negative and zero contamination from the fault. This is what we expect for a *mild* unbalance.
+
+**🟡 Takeaway:** On real exam problems you rarely do A⁻¹ "by hand" in rectangular form — but you must understand that (1.11)–(1.13) *are* the answer; everything in Unit II (fault analysis) is just plugging these into the right boundary conditions.
+
 ---
 
 ## 1.7 Three quick, important facts about zero sequence 🟡
