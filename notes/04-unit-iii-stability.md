@@ -162,6 +162,55 @@ Each application just changes what P<sub>e,during</sub>(δ) and P<sub>e,post</su
 
 **Figure 3.6(bis)** — Equal-area criterion applied to a fault cleared by opening one of two parallel lines: three P-δ curves are drawn — pre-fault (highest P<sub>max</sub>), during-fault (lowest, zero for a bolted 3-phase fault), and post-fault (intermediate, one line still in service, labelled P<sub>eII</sub> "line 2 out"). The angles δ<sub>0</sub> (initial), δ<sub>1</sub> (clearing), δ<sub>2</sub> (maximum swing), and shaded areas A<sub>1</sub> (accelerating) and A<sub>2</sub> (decelerating) are shown. *Source: K&N Fig. 12.26, book p. 472, PDF p. 245.*
 
+### Worked example (small numbers, equal-area) 🟡
+
+**Problem:** A generator with E = 1.2 pu is connected through a total pre-fault reactance X<sub>pre</sub> = 0.4 pu to an infinite bus at V = 1.0 pu. A three-phase fault at the generator terminals drops P<sub>e</sub> to zero during the fault. The fault is cleared by opening a line so the post-fault reactance becomes X<sub>post</sub> = 0.6 pu. The initial mechanical input is P<sub>m</sub> = 1.5 pu. Find whether the system is stable if the fault is cleared when δ<sub>c</sub> = 60°.
+
+**Step-by-step reasoning:**
+
+1. **Find the pre-fault operating point δ<sub>0</sub>.** Before the fault, P<sub>e,pre</sub>(δ) = (E V / X<sub>pre</sub>) sin δ = (1.2·1/0.4) sin δ = 3 sin δ. Setting this equal to P<sub>m</sub> = 1.5 gives sin δ<sub>0</sub> = 1.5/3 = 0.5, so δ<sub>0</sub> = 30° (0.524 rad). *We take the smaller angle — that's the stable equilibrium (dP/dδ > 0).*
+
+2. **Identify the three curves:**
+   - During the fault: P<sub>e,during</sub>(δ) = 0 (a bolted 3-phase fault right at the terminals is the worst case).
+   - After clearing: P<sub>e,post</sub>(δ) = (1.2·1/0.6) sin δ = 2 sin δ; P<sub>max,post</sub> = 2 pu.
+
+3. **Find the post-fault unstable equilibrium δ<sub>max</sub>.** This is where P<sub>e,post</sub> = P<sub>m</sub> again, at δ > 90°: sin δ<sub>max</sub> = 1.5/2 = 0.75, so δ<sub>max</sub> = 180° − 48.6° = 131.4° (2.29 rad).
+
+4. **Compute the accelerating area A<sub>1</sub>.** Because P<sub>e,during</sub> = 0, this is just a rectangle:
+   ```
+   A1 = ∫_{δ0}^{δc} Pm dδ = Pm (δc − δ0) = 1.5 · (60° − 30°) in rad
+      = 1.5 · (π/6) = 0.785 pu·rad
+   ```
+
+5. **Compute the available decelerating area A<sub>2</sub>.** Between δ<sub>c</sub> and δ<sub>max</sub>, P<sub>e,post</sub> > P<sub>m</sub>:
+   ```
+   A2 = ∫_{δc}^{δmax} (Pmax,post sin δ − Pm) dδ
+      = Pmax,post (cos δc − cos δmax) − Pm (δmax − δc)
+   ```
+   Converting to radians: δ<sub>c</sub> = 60° = 1.047 rad; δ<sub>max</sub> = 2.294 rad.
+   ```
+   cos 60° = 0.5
+   cos 131.4° = cos(180° − 48.6°) = −cos 48.6° = −0.661
+   A2 = 2 · (0.5 − (−0.661)) − 1.5 · (2.294 − 1.047)
+      = 2 · 1.161 − 1.5 · 1.247
+      = 2.322 − 1.871 = 0.451 pu·rad
+   ```
+
+6. **Compare:** A<sub>1</sub> = 0.785 > A<sub>2</sub> = 0.451. **The system is unstable** for δ<sub>c</sub> = 60° — the rotor gains more kinetic energy during the fault than can be absorbed after clearing.
+
+7. **Bonus — find the critical clearing angle:** set A<sub>1</sub> = A<sub>2</sub> with δ<sub>c</sub> = δ<sub>cr</sub>:
+   ```
+   Pm (δcr − δ0) = Pmax,post (cos δcr − cos δmax) − Pm (δmax − δcr)
+   ⇒ Pm (δmax − δ0) = Pmax,post (cos δcr − cos δmax)
+   ⇒ cos δcr = (Pm (δmax − δ0))/Pmax,post + cos δmax
+               = (1.5·(2.294 − 0.524))/2 + (−0.661)
+               = 1.328 − 0.661 = 0.667
+   ⇒ δcr ≈ 48°  (≈ 0.84 rad)
+   ```
+   Clearing at 60° is well past the 48° critical angle — instability confirmed.
+
+**🟡 Does this make sense?** P<sub>m</sub> = 1.5 pu is 75% of the post-fault maximum (2 pu), which is a very high initial loading. That leaves little decelerating margin — the rotor can only swing 30° past δ<sub>c</sub> before hitting the unstable equilibrium. Faster clearing (smaller δ<sub>c</sub>) or stronger post-fault ties (larger P<sub>max,post</sub>) would shrink A<sub>1</sub> and enlarge A<sub>2</sub>.
+
 ---
 
 ## 3.5 Point-by-point (step-by-step) solution 🔵 Routine

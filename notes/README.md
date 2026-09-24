@@ -55,13 +55,19 @@ Other signposts:
 9. Each unit opens with a "why this matters" paragraph — a real-world problem that forces the topic, never "what will be on the exam."
 10. Technical terms introduced once and used consistently; synonyms flagged.
 11. Subject map in `00-outline.md` and `01-intro` shows how units connect before diving in.
-12. **Added** (not in brief): explicit pacing dots, recurring symbol-redefinition convention (every symbol re-defined at first use in each unit), and a complete diagram-verification log.
+12. **Added** (not in brief): explicit pacing dots, recurring symbol-redefinition convention (every symbol re-defined at first use in each unit), narrated round-number worked examples in each unit, a quick-reference card (07), a glossary & symbol index (08), and a complete diagram-verification log.
+
+## Worked examples
+- Unit II §2.7: LG fault through Y<sub>g</sub>-Δ transformer (5 pu fault current)
+- Unit III §3.4: Equal-area stability calculation (3φ fault cleared by line trip, finding δ<sub>cr</sub>)
+- Unit IV §4.3: Two-plant economic dispatch (250/150 MW, λ = 11 Rs/MWh) with a generator-limit bonus
+- Unit V: embedded round-number illustrations (5% droop load-sharing, D + 1/R stiffness) within the prose
 
 ## Figure count
 - Unit I: 10 placed K&N figures
 - Unit II: 13 placed K&N figures
 - Unit III: 8 placed K&N figures
 - Unit IV: 4 placed K&N figures
-- Unit V: 1 placed K&N figure (the governor schematic), with detailed prose walk-through of the hardware
+- Unit V: 1 placed K&N figure (governor schematic)
 
-**Total: 36 placed diagrams**, all cropped directly from K&N (no invented or redrawn diagrams), each cited with book page and PDF page directly beneath the figure. The diagram log records verification status honestly, including ⚠️ notes where a scan crop has a minor edge-clip from the original book scan.
+**Total: 36 placed diagrams**, all cropped directly from K&N (no invented or redrawn diagrams), each cited with book page and PDF page directly beneath the figure. Six previously partial crops (Figs. 9.1, 9.6, 11.1, 12.1, 12.22, 7.1) were re-cropped for full completeness; remaining ⚠️ notes in the diagram log flag minor edge-clips that do not affect the pedagogical content.

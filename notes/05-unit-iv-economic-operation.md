@@ -71,6 +71,52 @@ P_i(λ) = (λ - b_i)/(2c_i)                                 (4.5)
 ```
 If any P<sub>i</sub> would come out above P<sub>i,max</sub> or below P<sub>i,min</sub>, clamp that unit at its limit and re-solve λ over the remaining units (K&N §7.2, book pp. 245–250).
 
+### Worked example (two units, small numbers) 🟡
+
+**Problem:** Two thermal units feed a total load of 400 MW on a lossless bus. Their cost curves are:
+- Unit 1: C<sub>1</sub> = 200 + 6 P<sub>1</sub> + 0.01 P<sub>1</sub>²  Rs/h
+- Unit 2: C<sub>2</sub> = 150 + 5 P<sub>2</sub> + 0.02 P<sub>2</sub>²  Rs/h
+
+(P<sub>1</sub>, P<sub>2</sub> in MW; neglect generator limits for this first pass.) Find the economic dispatch.
+
+**Step-by-step reasoning:**
+
+1. **Write the incremental costs.** Differentiate each C with respect to its own P:
+   ```
+   IC1 = dC1/dP1 = 6 + 0.02 P1    Rs/MWh
+   IC2 = dC2/dP2 = 5 + 0.04 P2    Rs/MWh
+   ```
+   Unit 2 has a lower intercept (cheaper at low output), but its IC rises twice as fast.
+
+2. **Apply equal-λ: set IC1 = IC2 = λ, and enforce P<sub>1</sub> + P<sub>2</sub> = 400.**
+   ```
+   6 + 0.02 P1 = λ
+   5 + 0.04 P2 = λ
+   P1 + P2 = 400
+   ```
+
+3. **Solve.** From the first two equations: P<sub>1</sub> = 50(λ − 6); P<sub>2</sub> = 25(λ − 5). Substitute into the power balance:
+   ```
+   50(λ − 6) + 25(λ − 5) = 400
+   50λ − 300 + 25λ − 125 = 400
+   75λ = 825   ⇒  λ = 11 Rs/MWh
+   ```
+   Then
+   ```
+   P1 = 50(11 − 6) = 250 MW
+   P2 = 25(11 − 5) = 150 MW
+   ```
+
+4. **Sanity check.** At P<sub>1</sub> = 250, IC<sub>1</sub> = 6 + 0.02·250 = 11 Rs/MWh. At P<sub>2</sub> = 150, IC<sub>2</sub> = 5 + 0.04·150 = 11 Rs/MWh. They are equal to λ ✓; P<sub>1</sub> + P<sub>2</sub> = 400 ✓.
+
+5. **What's the cost saving vs. naive dispatch?** If you (naively) split 400 MW equally, IC<sub>1</sub> at 200 MW = 10 Rs/MWh, IC<sub>2</sub> at 200 MW = 13 Rs/MWh — the last MW from unit 2 costs 3 Rs more than shifting it to unit 1, which is exactly why shifting from unit 2 to unit 1 until ICs equalise saves money.
+
+**🟡 Does this make sense?** The cheaper-slope unit (unit 1, with smaller c) picks up more than half the load (250 vs 150 MW). That's intuitive — a flatter IC curve means the unit stays cheap over a wider range. Notice that λ = 11 Rs/MWh is the *system* marginal cost: one additional MW of load costs 11 Rs/h, regardless of which unit picks it up.
+
+**Bonus — generator limits:** Suppose unit 1 has P<sub>1,max</sub> = 220 MW (it cannot reach 250). Then we clamp P<sub>1</sub> = 220 MW, which forces P<sub>2</sub> = 180 MW. Check ICs: IC<sub>1</sub> = 6 + 0.02·220 = 10.4; IC<sub>2</sub> = 5 + 0.04·180 = 12.2. They are no longer equal — that is correct, because unit 1 is at its limit and cannot take any more; the marginal MW must come from unit 2 at 12.2 Rs/MWh, which is the new effective λ.
+
+---
+
 The result of the equal-lambda dispatch is a piecewise-linear sharing of load between units as total plant output rises. Fig. 7.4 shows this for K&N Example 7.1: as total plant output increases from 0 to 250 MW, units 1 and 2 share the load according to equal-incremental-cost, with one or both units saturating at their limits at the low and high ends:
 
 ![Fig. 7.4](figures/fig7_4.png)
