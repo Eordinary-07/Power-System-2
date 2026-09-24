@@ -73,6 +73,58 @@ Frequency drops (Δf negative) proportionally to the size of the load step, divi
 **❓ Understanding checkpoint:** Two parallel units have R = 0.05 (5%) and R = 0.04 (4%). For the same Δf, which picks up more power per unit MW rating?
   - *Answer:* The unit with smaller R (4%) has higher gain (1/R = 25 vs 20), so it picks up more. That's why units meant to carry more frequency-responsive load (spinning reserve) are set to lower droop.
 
+### Worked example (two generators sharing a load step) 🟡
+
+**Problem:** Two generators are operating in parallel at 50 Hz.
+- Gen 1: rating 200 MW, R<sub>1</sub> = 5% = 0.05 pu on its own base
+- Gen 2: rating 100 MW, R<sub>2</sub> = 4% = 0.04 pu on its own base
+- Initially each is at half load: P<sub>1</sub> = 100 MW, P<sub>2</sub> = 50 MW, total generation 150 MW, frequency exactly 50 Hz.
+- Load damping D = 0 (assume loads are not frequency-dependent — worst case for illustration, and standard for a first problem).
+
+A 30 MW load is suddenly added. Find the new steady-state frequency and each generator's new output.
+
+**Step-by-step reasoning:**
+
+1. **Convert everything to a common base.** Choose S<sub>base</sub> = 100 MVA.
+   - Gen 1 rating = 200 MVA = 2 pu. R<sub>1</sub> = 0.05 pu on 200 MVA base = 0.05 × (2/1) = 0.10 pu on 100 MVA base (recall: R in Hz/MW has units of frequency/power; converting pu R from one base to another: R<sub>new</sub> = R<sub>old</sub> × S<sub>old,base</sub>/S<sub>new,base</sub>).
+   - Gen 2 rating = 100 MVA = 1 pu. R<sub>2</sub> = 0.04 pu on 100 MVA base = 0.04 pu (same base already).
+   
+   **Wait — easier approach for a first problem:** work in MW and Hz directly instead of pu. In physical units, the droop characteristic is:
+   ```
+   ΔP1 = −(P_rated1 / (R1 · f_nom)) · Δf
+   ΔP2 = −(P_rated2 / (R2 · f_nom)) · Δf
+   ```
+   where P<sub>rated</sub> is the MW that corresponds to the full rated output (i.e., at Δf = −R·f<sub>nom</sub>, ΔP = P<sub>rated</sub>). Let's verify: for Gen 1, a 5% frequency drop is 2.5 Hz; at that Δf the unit picks up its full 200 MW rating, so the gain is 200 MW / 2.5 Hz = 80 MW/Hz. Similarly Gen 2: 100 MW / 2 Hz = 50 MW/Hz.
+
+2. **Write the power balance at steady state (derivatives zero, D = 0):**
+   ```
+   ΔPm1 + ΔPm2 = ΔPe = 30 MW
+   ΔPm1 = −(P_rated1/(R1·f_nom)) Δf = −(200/(0.05·50)) Δf = −80 Δf   (MW per Hz)
+   ΔPm2 = −(100/(0.04·50)) Δf = −50 Δf
+   ```
+   The minus sign: if frequency drops (Δf < 0), ΔP<sub>m</sub> > 0 (units pick up load).
+
+3. **Solve for Δf:**
+   ```
+   (−80 Δf) + (−50 Δf) = 30
+   −130 Δf = 30
+   Δf = −30/130 = −0.231 Hz
+   ```
+   New frequency f = 50 − 0.231 = **49.77 Hz**.
+
+4. **Find the new outputs:**
+   ```
+   ΔP1 = −80·(−0.231) = 18.5 MW    → P1_new = 100 + 18.5 = 118.5 MW
+   ΔP2 = −50·(−0.231) = 11.5 MW    → P2_new = 50 + 11.5 = 61.5 MW
+   ```
+   Check: 18.5 + 11.5 = 30 MW (matches the load step ✓).
+
+5. **Does this make sense?** Gen 1 is twice the size of Gen 2 and has a slightly *higher* (less-stiff) droop in Hz/MW terms (2.5 Hz / 200 MW = 0.0125 Hz/MW vs 2 Hz / 100 MW = 0.02 Hz/MW). Stiffer droop (smaller Hz/MW) picks up more MW per Hz of deviation. In fact the load is split 62%/38%, which is in the ratio 80:50 = 1.6:1. This is the **natural, automatic load sharing** droop provides, without any communication between plants.
+
+6. **What AGC does next.** The 0.23 Hz steady-state error is the primary (droop) response. Over the next 30 seconds or so, AGC at each generator integrates the ACE signal and slowly raises both generators' speed-changer setpoints by the right amount to restore frequency to 50 Hz while respecting the desired economic dispatch (which, in this case, would likely push more of the 30 MW onto whichever unit is cheaper — that's the Unit IV equal-λ problem deciding the final sharing; AGC's job is simply to eliminate Δf).
+
+**🟡 Takeaway:** Droop is what lets a thousand generators on a grid share a sudden load change *instantly* and *stably* without talking to each other. The cost is a small steady-state frequency error; AGC cleans that up over seconds to minutes.
+
 ---
 
 ## 5.3 Automatic Generation Control (AGC) 🔵 (secondary control)
